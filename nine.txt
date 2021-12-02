@@ -1,0 +1,39 @@
+import random
+import time
+
+massive = []
+i = 1
+lenta = int(input('Lenght of massive:  '))
+[massive.append(random.randint(1, 10**lenta)) for i in range (10**lenta)]
+
+
+def search(massive, n):
+    for i in massive:
+        if i == n:
+            return True
+        if i != n:
+            return False
+
+def find_binar (lst, x):
+    left = 0
+    right = len(lst)-1
+    while left <= right:
+        n = (left + right) // 2
+        if lst[n] == x:
+            return True
+        if lst[n] < x:
+            left = n + 1
+        if lst[n] < x:
+            right = n - 1
+
+def recursion(array,lenta,left,right):
+    middle=(right+left)//2
+    if(array[middle]==lenta):
+        return middle
+    if(array[middle]<lenta):
+        return recursion(array,lenta,middle-1,right)
+    else:
+        return recursion(array,lenta,left,middle+1)
+
+
+print(find_binar (massive, lenta))
